@@ -1,0 +1,38 @@
+######
+Description:
+######
+
+Create a relationship between 2 users.
+relationship_type can be >
+"favorite_user",
+"interest_user",
+"blocked_user",
+"visited_user"
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=create_relationship_user
+- BODY POST > relationship_type, recipient_id
+
+######
+Returns
+######
+
+{
+    "status": "success",
+    "code": "create_relationship_successful",
+    "message": "Relationship created successfully.",
+    "content": {
+        "relationship_id": 21,
+        "recipient_id": "22"
+    }
+}
+
+{
+    "status": "error",
+    "code": "create_relationship_user_missing_parameter",
+    "message": "Parameter(s) missing (relationship_type, recipient_id)."
+}

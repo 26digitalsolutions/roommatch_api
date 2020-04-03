@@ -1,0 +1,34 @@
+######
+Description:
+######
+
+Create a relationship between a user and a listing.
+relationship_type can be > favorite_listing, interest_listing, visited_listing
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=create_relationship_listing
+- BODY POST > relationship_type, listing_id
+
+######
+Returns
+######
+
+{
+    "status": "success",
+    "code": "create_relationship_successful",
+    "message": "Relationship created successfully.",
+    "content": {
+        "relationship_id": 20,
+        "listing_id": "1"
+    }
+}
+
+{
+    "status": "error",
+    "code": "create_relationship_listing_incorrect_relationship_type",
+    "message": "Incorrect relationship type."
+}

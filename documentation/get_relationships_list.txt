@@ -1,0 +1,42 @@
+######
+Description:
+######
+
+Get the list of relationships between 2 users or between 1 user and a listing.
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=get_relationships_list
+- BODY POST > type (user or listing), id (user_id or listing_id), relationship_type (optional, must be allowed value)
+
+######
+Returns
+######
+
+{
+    "status": "success",
+    "code": "get_relationships_list_successful",
+    "message": "Relationships list returned successfully.",
+    "content": {
+        "nb_total": 1,
+        "list": [
+            {
+                "relationship_id": "19",
+                "relationship_type": "blocked_user",
+                "sender_id": "7",
+                "recipient_id": "8",
+                "listing_id": "0",
+                "time_created": "1508247438"
+            }
+        ]
+    }
+}
+
+{
+    "status": "error",
+    "code": "get_relationships_list_missing_parameter",
+    "message": "Parameter(s) missing (type, id)."
+}

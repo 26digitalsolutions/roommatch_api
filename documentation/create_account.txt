@@ -1,0 +1,33 @@
+######
+Description:
+######
+
+Used to create a new user account.
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=create_account
+- BODY POST > email_address, password, country
+
+######
+Returns
+######
+
+{
+    "status": "success",
+    "code": "create_account_created_sucessfully",
+    "message": "New account successfully created.",
+    "content": {
+        "user_id": 19,
+        "token": "863eaf57ea42b1ced6892c291603727b"
+    }
+}
+
+{
+    "status": "error",
+    "error_code": "create_account_email_already_exists",
+    "error_message": "This email address is already associated to an account."
+}

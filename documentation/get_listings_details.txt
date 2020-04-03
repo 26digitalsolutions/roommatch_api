@@ -1,0 +1,39 @@
+######
+Description:
+######
+
+Returns all public data associated to a listing_id.
+Input is a json object containing listings id: ["1","2","3"...]
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=get_listings_details
+- BODY POST > content ["1","2","3"...]
+
+######
+Returns
+######
+
+{
+    "status": "error",
+    "code": "get_listing_details_missing_paramater",
+    "message": "Field(s) missing (listing_id)."
+}
+
+{
+    "status": "success",
+    "code": "get_listing_details_success",
+    "message": "Listing details returned successfully.",
+    "content": {
+        "listing_id": "1",
+        "listing_type": "",
+        "user_id": "1",
+        "status": "in_moderation",
+        "time_created": "1507729208",
+        "time_published": "0",
+        "time_deleted": "0"
+    }
+}

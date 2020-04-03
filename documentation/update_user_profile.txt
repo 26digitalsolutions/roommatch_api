@@ -1,0 +1,44 @@
+######
+Description:
+######
+
+Used to update user's data in table users_parameters.
+Should input a json object like :
+{
+  "first_name":"John",
+  "whatever": "value"
+  ... there is a list of allowed parameters...
+}
+User must be logged in to execute this action.
+After update is done, a new record is created in 'elastic_queue' table to update noSQL DB.
+CHECK ALLOWED PARAMETERS LIST
+
+######
+Request
+######
+
+- Header > api_key, user_id, token
+- GET > ?action=update_user_profile
+- BODY POST > content (json object)
+
+######
+Returns
+######
+
+{
+    "status": "error",
+    "code": "content_not_json",
+    "message": "Content must be a valid json object."
+}
+
+{
+    "status": "success",
+    "code": "data_successfully_updated",
+    "message": "Data successfully updated.",
+    "content": {
+        "username": "wefwefew",
+        "age": "22",
+        "looking_for": "room"
+        ...
+    }
+}

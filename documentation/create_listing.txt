@@ -1,0 +1,34 @@
+######
+Description:
+######
+
+Used to create a new listing with status > 'in_moderation'
+User must be logged in to execute this action.
+After listing is created, a new record is created in 'elastic_queue' table to update noSQL DB.
+
+######
+Request
+######
+
+- Header > api_key, user_id, token
+- GET > ?action=create_listing
+- BODY POST > no parameter is required in the body of the request
+
+######
+Returns
+######
+
+{
+    "status": "error",
+    "code": "database_query_error",
+    "message": "Error while querying database."
+}
+
+{
+    "status": "success",
+    "code": "create_listing_success",
+    "message": "Listing created successfully.",
+    "content": {
+        "listing_id": 8
+    }
+}

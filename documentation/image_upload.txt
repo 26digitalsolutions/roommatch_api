@@ -1,0 +1,55 @@
+######
+Description: Image upload
+######
+
+Images are upload directly to Firebase Cloud storage.
+When an user creates an account ('create_account'), we generate a Token to identify that user with Firebase.
+That token is returned in 'login_account' , 'get_user_profile' , 'create_account' responses.
+
+The Firebase Cloud Storage bucket should have the following rules :
+- in images/ folder, only accept images.
+- less or equal than 10mb
+- only from logged in users
+- the domain name from which request is done should be allowed (if possible)
+
+- Front end javascript code to upload directly to Firebase Cloud Storage :
+
+// Initialize Firebase
+var config = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};
+firebase.initializeApp(config);
+
+// authenticate user with Firebase
+firebase.auth().signInWithCustomToken("#TOKEN-HERE#").catch(function(error) {
+  console.log(error);
+});
+
+// Initialize Firebase Cloud Storage
+var firebase_cloud_storage = firebase.storage().ref("/path/to/file/file-name-here.png");
+
+// Upload to Firebase Cloud Storage and listen to callback
+var file_data = document.getElementById("input_type_file").prop('files')[0];
+firebase_cloud_storage.put(file_data).then(function(response) {
+  console.log(response);
+});
+
+
+######
+Thumbnail generation
+######
+
+After an image is uploaded, we generate a thumbnail of that image using Google Cloud Functions, directly on the cloud, using Google Cloud Functions.
+Optional: I can auto moderate it using Google Cloud Vision and Google Cloud Functions before pushing a callback to my API.
+
+Example of function that listens to files uploaded, check is they are images, if so will generate a thumbnail :
+https://github.com/firebase/functions-samples/blob/master/quickstarts/thumbnails/functions/index.js
+
+The thumbnail should be uploaded to the same folder.
+Only the file name should change.
+ex: image.png > thumbnail_image.png or thumbnail_300x300_image.png
