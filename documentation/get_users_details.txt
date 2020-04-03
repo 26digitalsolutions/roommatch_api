@@ -1,0 +1,38 @@
+######
+Description:
+######
+
+Returns all profile data for a given user_id, except password field.
+In case the request is sent by a logged in user :
+- if the logged in user is different from requested user_id > we hide email_address field
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=get_user_profile
+- BODY POST > user_id
+
+######
+Returns
+######
+
+{
+    "status": "error",
+    "code": "get_user_profile_missing_user_id",
+    "message": "Missing or incorrect user id."
+}
+
+{
+    "status": "success",
+    "code": "get_user_profile_success",
+    "message": "User public profile data returned successfully.",
+    "content": {
+        "user_id": "12",
+        "country": "",
+        "time_created": "1507563644",
+        "token": "e941b0b11f803b8414252e8cfc714e3d"
+        ...
+    }
+}

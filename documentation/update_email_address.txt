@@ -1,0 +1,32 @@
+######
+Description:
+######
+
+User can update the email address associated to his account.
+Input is new_email_address. We check that no other user uses same email address.
+User must be logged in to perform this action.
+
+######
+Request
+######
+
+- Header > api_key, user_id, token
+- GET > ?action=update_email_address
+- BODY POST > new_email_address
+
+######
+Returns
+######
+
+{
+    "status": "error",
+    "code": "update_email_address_already_used",
+    "message": "This email address is already associated to an account."
+}
+
+{
+    "status": "success",
+    "code": "data_successfully_updated",
+    "message": "Data successfully updated.",
+    "content": ""
+}

@@ -1,0 +1,33 @@
+######
+Description:
+######
+
+Delete a relationship using relationship_id.
+An user can only delete relationships that he has created, one at a time.
+
+######
+Request
+######
+
+- Header > api_key
+- GET > ?action=delete_relationship
+- BODY POST > relationship_id
+
+######
+Returns
+######
+
+{
+    "status": "success",
+    "code": "delete_relationship_successful",
+    "message": "Relationship deleted successfully.",
+    "content": {
+        "relationship_id": "2"
+    }
+}
+
+{
+    "status": "error",
+    "code": "delete_relationship_not_found",
+    "message": "Relationship not found."
+}
