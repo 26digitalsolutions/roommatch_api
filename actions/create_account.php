@@ -66,29 +66,12 @@ else {
 
   $user_id = mysqli_insert_id($c);
 
-  //
-  // Generate firebase identification token
-  require("config/firebase_identification.php");
-  $firebase_identification_token = create_firebase_token($user_id);
-  mysqli_query($c,"INSERT INTO users_parameters (
-    user_id,
-    parameter_key,
-    parameter_value
-  ) VALUE (
-    '$user_id',
-    'firebase_identification_token',
-    '".addslashes($firebase_identification_token)."'
-  )");
-  //
-  //
-
   return_api_success(
     "create_account_created_sucessfully",
     array(
       "user_id" => $user_id,
       "country" => $_POST['country'],
-      "token" => $token,
-      "firebase_identification_token" => $firebase_identification_token
+      "token" => $token
     )
   );
 
