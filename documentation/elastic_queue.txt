@@ -1,7 +1,0 @@
-Table 'elastic_queue' >
-
-- field 'action_type' values :
-
-# add (add new record or update existing one, must check if exists first in noSQL DB)
-
-# delete (delete record from noSQL DB)
